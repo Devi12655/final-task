@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.div1 {
+    background-color: aliceblue;
+    background-size: cover;
+    height: 100vh;
+}
+
+.todohead1 {
+    text-align: center;
+    font-family: roboto;
+    font-size: 50px;
+    padding: 25px;
+}
+
+.todohead2 {
+    font-family: roboto;
+    font-size: 40px;
+}
+
+.spanelement {
+    font-weight: bold;
+}
+
+.inputelement {
+    height: 50px;
+    width: 100%;
+    border-width: 0px;
+    border-radius: 5px;
+    padding: 17px;
+}
+
+.button1 {
+    background-color: rgb(81, 81, 160);
+    color: white;
+    font-size: 19px;
+    font-family: roboto;
+    border-radius: 5px;
+    border-width: 0px;
+    width: 70px;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.div2 {
+    margin-top: 50px;
+}
+
+.todoli {
+    margin-top: 25px;
+}
+
+.checkb {
+    width: 20px;
+    height: 20px;
+    margin-top: 12px;
+    margin-right: 12px;
+}
+
+.labelcon {
+    background-color: rgb(214, 242, 251);
+    width: 100%;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #096f92;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+}
+
+.HTML {
+    font-family: roboto;
+    width: 82%;
+    font-size: 20px;
+    color: rgb(24, 23, 23);
+    padding-top: 10px;
+    padding-left: 20px;
+
+}
+
+.deldiv {
+    text-align: right;
+    width: 18%;
+}
+
+.deleteicon {
+    padding: 15px;
+    margin-left: auto;
+
+}
+.checked{
+    text-decoration: line-through;
+}

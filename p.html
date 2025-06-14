@@ -1,0 +1,211 @@
+<html>
+    <body>
+<script>
+let i=document.createElement("input")
+i.type="textbox";
+function print(event){
+    console.log(event.type);
+}
+i.addEventListener('keyup',print);
+document.body.appendChild(i);
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Store</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    header {
+      background-color: #0f1111;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .top-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      background-color: #fff;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .control-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .control-box h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .control-box select {
+      padding: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .product-details {
+      padding: 1rem;
+    }
+
+    .product-details h4 {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛍️ Product Store</h1>
+  </header>
+
+  <div class="top-controls">
+    <div class="control-box">
+      <h3>Category</h3>
+      <select id="categorySelect">
+        <option value="all">All</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Accessories">Accessories</option>
+      </select>
+    </div>
+    <div class="control-box">
+      <h3>Price Range</h3>
+      <select id="priceSelect">
+        <option value="all">All</option>
+        <option value="100-500">₹100 - ₹500</option>
+        <option value="500-1000">₹500 - ₹1000</option>
+      </select>
+    </div>
+    <div class="control-box">
+      <h3>Sort By</h3>
+      <select id="sortOptions">
+        <option value="default">Default</option>
+        <option value="priceLowHigh">Price: Low to High</option>
+        <option value="priceHighLow">Price: High to Low</option>
+        <option value="ratingHighLow">Rating: High to Low</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="container">
+    <main id="productList"></main>
+  </div>
+
+  <script>
+    const products = [
+      { id: 1, name: "Smartphone", category: "Electronics", price: 599, rating: 4.5, img: "https://m.media-amazon.com/images/I/61VuVU94RnL._UF1000,1000_QL80_.jpg" },
+      { id: 2, name: "Jeans", category: "Clothing", price: 499, rating: 4.0, img: "https://theclothingfactory.in/cdn/shop/files/Theclothing-23-08-2325420_128de7ee-1f9a-4e61-90e3-eb252783c64c.jpg?v=1694109920" },
+      { id: 3, name: "Watch", category: "Accessories", price: 199, rating: 4.7, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5iOBGGDk6Ido6M19hObJ3iL5BPGknjcIzIw&s" },
+      { id: 4, name: "Headphones", category: "Electronics", price: 149, rating: 4.2, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmPXfeDt5hJmrEqteqyEK7xxJLaBb9CvmoHg&s" },
+      { id: 5, name: "T-shirt", category: "Clothing", price: 319, rating: 3.9, img: "https://images-cdn.ubuy.co.in/64635d08ef7bfe40fa2c12a4-essentials-t-shirt.jpg" },
+      { id: 6, name: "Leather Bag", category: "Accessories", price: 899, rating: 4.4, img: "https://images-cdn.ubuy.co.in/66725067d0e8e103ff06ff8e-cocopeaunts-new-embroidered-messenger.jpg" },
+      { id: 7, name: "Bluetooth Speaker", category: "Electronics", price: 259, rating: 4.6, img: "https://www.simplyshopping.in/cdn/shop/products/81PaGPkMt5L._SL1500.jpg?v=1676113454" },
+      { id: 8, name: "Sneakers", category: "Clothing", price: 129, rating: 4.3, img: "https://m.media-amazon.com/images/I/716n27lRtYL._AC_UY1100_.jpg" },
+      { id: 9, name: "Sunglasses", category: "Accessories", price: 149, rating: 4.0, img: "https://accessorizelondon.in/cdn/shop/products/MA-59301781001_1_9ff341e6-0170-474c-8ce6-f57d8119caee.jpg?v=1683285214" },
+      { id: 10, name: "Laptop", category: "Electronics", price: 899, rating: 4.8, img: "https://cdn.thewirecutter.com/wp-content/media/2024/11/cheapgaminglaptops-2048px-7981.jpg" }
+    ];
+
+    const productList = document.getElementById('productList');
+    const categorySelect = document.getElementById('categorySelect');
+    const priceSelect = document.getElementById('priceSelect');
+    const sortOptions = document.getElementById('sortOptions');
+
+    function displayProducts(items) {
+      productList.innerHTML = '';
+      if (items.length === 0) {
+        productList.innerHTML = '<p>No products found.</p>';
+        return;
+      }
+      items.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${product.img}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/240x180?text=No+Image'">
+          <div class="product-details">
+            <h4>${product.name}</h4>
+            <p>₹${product.price}</p>
+            <p>⭐ ${product.rating}</p>
+          </div>
+        `;
+        productList.appendChild(card);
+      });
+    }
+
+    function filterAndSort() {
+      const selectedCategory = categorySelect.value;
+      const selectedPrice = priceSelect.value;
+      const sortBy = sortOptions.value;
+
+      let filtered = products.filter(p =>
+        (selectedCategory === 'all' || p.category === selectedCategory) &&
+        (selectedPrice === 'all' || 
+         (selectedPrice === '100-500' && p.price >= 100 && p.price <= 500) ||
+         (selectedPrice === '500-1000' && p.price > 500 && p.price <= 1000))
+      );
+
+      if (sortBy === 'priceLowHigh') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortBy === 'priceHighLow') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (sortBy === 'ratingHighLow') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      displayProducts(filtered);
+    }
+
+    categorySelect.addEventListener('change', filterAndSort);
+    priceSelect.addEventListener('change', filterAndSort);
+    sortOptions.addEventListener('change', filterAndSort);
+
+    filterAndSort();
+  </script>
+</body>
+</html>
